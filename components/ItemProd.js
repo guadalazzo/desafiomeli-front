@@ -1,6 +1,9 @@
-			
-export default ({name, price, location, image}) => (
- <a href="/item" className="product-item">
+import Link from 'next/link'			
+
+export default ({id,name, price, location, image}) => 
+<div className="item">
+ <Link prefetch href={ `/search?q=${id}` } className="product-item">
+ 	<div className="link__inside"> 
    <figure>
      <img src={image} alt="product view" />
      <div className="data">
@@ -11,12 +14,17 @@ export default ({name, price, location, image}) => (
      </div>
    </figure>
 	<span className="location">{location}</span>
+	</div>
+	</Link>
 			<style jsx>{`
 				.product-item{
 					display: flex;
 					width: 100%;
-					padding:16px;
 					text-decoration: none;
+				}
+				.link__inside{
+					display: flex;
+					padding:16px;
 				}
 				.product-item:hover{
 					opacity: 0.7;
@@ -47,5 +55,4 @@ export default ({name, price, location, image}) => (
 					border-radius: 4px;
 				}
 			`}</style>
-		</a>
-		);
+		</div>

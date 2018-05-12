@@ -1,6 +1,7 @@
 import Layout from "../components/Layout";
 import ItemProd from "../components/ItemProd";
 import Breadcrumbs from "../components/Breadcrumbs";
+import Link from 'next/link'
 import 'isomorphic-fetch';
 
 require("isomorphic-fetch");
@@ -24,6 +25,8 @@ export default class Items extends React.Component {
             {items.map(item => (
               <ItemProd
                 key={item.id}
+                id={item.id}
+                //item={item}
                 name={item.name}
                 price={item.price}
                 location={item.location}
