@@ -8,7 +8,7 @@ require("isomorphic-fetch");
 
 export default class Items extends React.Component {
   static async getInitialProps() {
-    const req = await fetch("http://localhost:3001/items");
+    const data = await fetch("http://localhost:3001/");
     const items = await req.json();
 
     return {items};
@@ -26,7 +26,6 @@ export default class Items extends React.Component {
               <ItemProd
                 key={item.id}
                 id={item.id}
-                //item={item}
                 name={item.name}
                 price={item.price}
                 location={item.location}
