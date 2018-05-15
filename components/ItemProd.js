@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default ({id,name, price, location, image}) => 
 <div className="item">
- <Link prefetch href={ `/items/:${id}` } className="product-item">
+ <Link prefetch href={ `/items?${id}` } className="product-item">
  	<div className="link__inside"> 
    <figure>
      <img src={image} alt="product view" />

@@ -7,29 +7,32 @@ import 'isomorphic-fetch';
 require("isomorphic-fetch");
 
 export default class Items extends React.Component {
-  static async getInitialProps() {
-    const data = await fetch("http://localhost:3001/");
-    const items = await req.json();
+  static async getInitialProps({req,res,query}) {
+    const API = 'http://localhost:3001'
+    const { search } = query
+    console.log(search)
+    const response = await fetch(`${API}/items?search=${search}`)
+    const {itemsearch: {results}} = await response.json()
 
-    return {items};
+    return {results}
   }
 
   render() {
-    const {items} = this.props;
-
+    const  {results} = this.props;
+    console.log(results);
     return (
       <Layout>
         <Breadcrumbs />
         <div className="container">
           <div className="items">
-            {items.map(item => (
+            {results.map(item => (
               <ItemProd
                 key={item.id}
                 id={item.id}
-                name={item.name}
+                name={item.title}
                 price={item.price}
-                location={item.location}
-                image={item.image}
+                image={item.thumbnail}
+                location={item.seller_address.state.name}
               />
             ))}
           </div>
