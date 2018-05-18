@@ -17,7 +17,7 @@ export default class Product extends React.Component {
 								</div>
 							</figure>
 								<section>
-									<h3>Descripcion del producto</h3>
+									<h3>Descripción del producto</h3>
 									<p>{prod.description}</p>
 								</section>
 						<style jsx>{` 
@@ -35,6 +35,7 @@ export default class Product extends React.Component {
 							}
 							section p{
 								color: #999999;
+								line-height: 22px;
 								font-size: 16px;
 								max-width: 70%;
 							}
@@ -58,11 +59,16 @@ export default class Product extends React.Component {
 							}
 							button{
 								margin-top: 16px;
+								cursor: pointer;
 								background: #3483FA;
 								box-shadow: none;
 								padding: 8px 10px;
 								color: white;
 								border: 1px solid #3483FA;
+								transition: 0.3s ease-in-out;
+							}
+							button:hover{
+								opacity: 0.7;
 							}
 							figure{
 								display: flex;

@@ -22,7 +22,7 @@ export default class Header extends React.Component{
 					object-fit: contain;
 				}
 				nav{
-					width: 80%;
+					width: 85%;
 					margin: auto;
 					display: flex;
 					justify-content: space-between;
