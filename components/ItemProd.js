@@ -9,7 +9,7 @@ handleClick = (event, id) => {
   render(){
   	const {...item} =this.props
   	
-  	const { id } = item
+  	const  {id}  = item
   	return(
 	  	<div className="item">
 			 <a href={`items/${item.id}`} onClick={event => this.handleClick(event,id)} className="product-item">
