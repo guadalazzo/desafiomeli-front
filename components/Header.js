@@ -9,6 +9,7 @@ export default class Header extends React.Component{
 					{ this.props.children }
 				</nav>
 			</header>
+			
 			<style jsx>{`
 				header {
 					background: #fff159;

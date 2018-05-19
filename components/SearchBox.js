@@ -1,18 +1,20 @@
-import Router from "next/router";
+import { Router } from "../routes"
+
 export default class SearchBox extends React.Component {
   state = {
     query: ""
   };
+
   handleChange = event => {
     this.setState({ query: event.target.value });
   };
+
   handleSubmit = event => {
     event.preventDefault();
     const { query } = this.state;
-    Router.replace(`/items?search=${query}`, `/items?search=${query}`, {
-      shallow: true
-    });
+    Router.pushRoute(`/items?search=${query}`);
   };
+
   render() {
     const { query } = this.state;
     return (
@@ -27,6 +29,7 @@ export default class SearchBox extends React.Component {
         <button type="submit">
           <i className="search-ic" />
         </button>
+
         <style jsx>{`
           form {
             position: relative;

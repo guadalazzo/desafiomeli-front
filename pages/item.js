@@ -1,10 +1,11 @@
+import "isomorphic-fetch"
+
 import Layout from "../components/Layout";
 import Breadcrumbs from "../components/Breadcrumbs";
 import Product from "../components/Product";
 
-require("isomorphic-fetch");
 
-export default class Items extends React.Component {
+class Items extends React.Component {
   static async getInitialProps({ req, res, query }) {
     const API = "http://localhost:3001";
     const product = query.id;
@@ -13,8 +14,10 @@ export default class Items extends React.Component {
 
     return result;
   }
+
   render() {
     const result = this.props.item;
+
     return (
       <Layout>
         <Breadcrumbs />
@@ -35,3 +38,5 @@ export default class Items extends React.Component {
     );
   }
 }
+
+export default Items

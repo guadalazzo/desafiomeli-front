@@ -1,8 +1,8 @@
-import { Link } from "../routes";
-import Router from "next/router";
+
 const CURRENCIES = {
   ARS: "$"
 };
+
 export default class Product extends React.Component {
   render() {
     const prod = this.props;
@@ -27,6 +27,7 @@ export default class Product extends React.Component {
           <h3>Descripción del producto</h3>
           <p>{prod.description}</p>
         </section>
+
         <style jsx>{`
           article {
             padding: 32px;

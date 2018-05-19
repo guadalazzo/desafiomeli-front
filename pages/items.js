@@ -2,43 +2,34 @@ import Layout from "../components/Layout";
 import Loading from "../components/Loading";
 import ItemProd from "../components/ItemProd";
 import Breadcrumbs from "../components/Breadcrumbs";
-import Link from "next/link";
 import "isomorphic-fetch";
 
-require("isomorphic-fetch");
-
-export default class Items extends React.Component {
+class Items extends React.Component {
   state = { isLoading: true, items: [], query: {} };
-  componentDidMount() {
-    this.setState(
-      {
-        query: this.props.url.query.search
-      },
-      this.handleRequest
-    );
-  }
-  componentWillReceiveProps(nextProps) {
-    this.setState(
-      {
-        query: nextProps.url.query.search,
-        isLoading: true
-      },
-      this.handleRequest
-    );
-  }
-  async handleRequest() {
+
+  // componentDidMount() {
+  //   this.setState(
+  //     {
+  //       query: this.props.url.query.search
+  //     },
+  //     this.handleRequest
+  // }
+
+  static async getInitialProps(req) {
+    const {search} =  req.query
+
     const API = "http://localhost:3001";
-    const response = await fetch(`${API}/items?search=${this.state.query}`);
+    const response = await fetch(`${API}/items?search=${search}`);
     const { items } = await response.json();
-    this.setState({
-      items,
-      isLoading: false
-    });
+
+
+    return { items }
   }
 
   render() {
-      let i=0;
-    if (this.state.isLoading) {
+    const { items } = this.props
+
+    if (false) {
       return (
         <Layout>
           <Breadcrumbs />
@@ -46,12 +37,13 @@ export default class Items extends React.Component {
         </Layout>
       );
     }
+
     return (
       <Layout>
         <Breadcrumbs />
         <div className="container">
           <div className="items">
-            {this.state.items.map(
+            {items.slice(0,4).map(
                     item => (
                       <ItemProd
                         key={item.id}
@@ -67,6 +59,7 @@ export default class Items extends React.Component {
                 )}
           </div>
         </div>
+
         <style jsx>{`
           .container {
             display: flex;
@@ -85,3 +78,5 @@ export default class Items extends React.Component {
     );
   }
 }
+
+export default Items

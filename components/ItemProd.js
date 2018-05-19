@@ -1,21 +1,22 @@
-import { Link } from "../routes";
 import Router from "next/router";
+
 const CURRENCIES = {
   ARS: "$"
 };
+
 export default class ItemProd extends React.Component {
-  handleClick = (event, id) => {
-    Router.pushRoute(`/items?id=${id}`, `/items/${id}`, { shallow: true });
-  };
+  // handleClick = (event, id) => {
+  //   Router.replaceRoute(`/items?id=${id}`, `/items/${id}`, { shallow: true });
+  // };
+
   render() {
     const { ...item } = this.props;
-
     const { id } = item;
+
     return (
       <div className="item">
         <a
           href={`items/${item.id}`}
-          onClick={event => this.handleClick(event, id)}
           className="product-item"
         >
           <figure>
