@@ -1,8 +1,8 @@
 import { Link } from "../routes";
 import Router from "next/router";
 const CURRENCIES = {
-    ARS:"$"
-}
+  ARS: "$"
+};
 export default class ItemProd extends React.Component {
   handleClick = (event, id) => {
     Router.pushRoute(`/items?id=${id}`, `/items/${id}`, { shallow: true });
@@ -22,7 +22,8 @@ export default class ItemProd extends React.Component {
             <img src={item.image} alt="product view" />
             <div className="data">
               <span className="price">
-                {CURRENCIES[item.currency]}{item.price}
+                {CURRENCIES[item.currency]}
+                {item.price}
               </span>
               <h2>{item.name}</h2>
             </div>
@@ -30,6 +31,9 @@ export default class ItemProd extends React.Component {
           <span className="location">{item.location}</span>
         </a>
         <style jsx>{`
+          .item{
+            border-bottom: 1px solid #EEEEEE;
+          }
           .product-item {
             display: flex;
             padding: 16px;
