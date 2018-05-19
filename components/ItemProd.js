@@ -1,6 +1,8 @@
 import { Link } from "../routes";
 import Router from "next/router";
-
+const CURRENCIES = {
+    ARS:"$"
+}
 export default class ItemProd extends React.Component {
   handleClick = (event, id) => {
     Router.pushRoute(`/items?id=${id}`, `/items/${id}`, { shallow: true });
@@ -20,10 +22,7 @@ export default class ItemProd extends React.Component {
             <img src={item.image} alt="product view" />
             <div className="data">
               <span className="price">
-                {item.price.toLocaleString("es-AR", {
-                  style: "currency",
-                  currency: "ARS"
-                })}
+                {CURRENCIES[item.currency]}{item.price}
               </span>
               <h2>{item.name}</h2>
             </div>

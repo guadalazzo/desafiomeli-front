@@ -1,6 +1,8 @@
 import {Link} from '../routes'		
 import Router from 'next/router'
-
+const CURRENCIES = {
+	ARS:"$"
+}
 export default class Product extends React.Component {
 
   render(){
@@ -12,7 +14,7 @@ export default class Product extends React.Component {
 								<div className="data-view">
 									<p><span>Nuevo</span> <span>-</span> <span>{prod.sold} vendidos</span></p>
 									<h2 className="product-name">{prod.name}</h2>
-									<span className="price">${prod.price}</span>
+									<span className="price">{CURRENCIES[prod.currency]}{prod.price}</span>
 									<button>Comprar</button>
 								</div>
 							</figure>

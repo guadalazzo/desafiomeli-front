@@ -7,34 +7,49 @@ import "isomorphic-fetch";
 require("isomorphic-fetch");
 
 export default class Items extends React.Component {
-  static async getInitialProps({ req, res, query }) {
+  state = { items: [], query: {} };
+  componentDidMount() {
+    this.setState(
+      {
+        query: this.props.url.query.search
+      },
+      this.handleRequest
+    );
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState(
+      {
+        query: nextProps.url.query.search
+      },
+      this.handleRequest
+    );
+  }
+  async handleRequest() {
     const API = "http://localhost:3001";
-    const { search } = query;
-    console.log(search);
-    const response = await fetch(`${API}/items?search=${search}`);
-    const {
-      itemsearch: { results }
-    } = await response.json();
-
-    return { results };
+    const response = await fetch(`${API}/items?search=${this.state.query}`);
+    const { items } = await response.json();
+    console.log(items);
+    this.setState({
+      items
+    });
   }
 
   render() {
-    const { results } = this.props;
-    console.log(results);
     return (
       <Layout>
         <Breadcrumbs />
         <div className="container">
           <div className="items">
-            {results.map(item => (
+            {this.state.items.map(item => (
               <ItemProd
                 key={item.id}
                 id={item.id}
                 name={item.title}
-                price={item.price}
-                image={item.thumbnail}
-                location={item.seller_address.state.name}
+                price={item.price.amount}
+                currency={item.price.currency}
+                priceDecimals={item.price.decimals}
+                image={item.picture}
+                location={item.location}
               />
             ))}
           </div>

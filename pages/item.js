@@ -15,8 +15,6 @@ export default class Items extends React.Component {
   }
   render() {
     const result = this.props.item;
-    console.clear();
-    console.log(result);
     return (
       <Layout>
         <Breadcrumbs />
@@ -26,6 +24,8 @@ export default class Items extends React.Component {
             image={result.pictures}
             name={result.title}
             price={result.price.amount}
+            currency={result.price.currency}
+            priceDecimals={result.price.decimals}
             sold={result.sold_quantity}
             description={result.description}
             //productstate={result.attributes.value_name}
