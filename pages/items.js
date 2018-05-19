@@ -1,4 +1,5 @@
 import Layout from "../components/Layout";
+import Loading from "../components/Loading";
 import ItemProd from "../components/ItemProd";
 import Breadcrumbs from "../components/Breadcrumbs";
 import Link from "next/link";
@@ -7,7 +8,7 @@ import "isomorphic-fetch";
 require("isomorphic-fetch");
 
 export default class Items extends React.Component {
-  state = { items: [], query: {} };
+  state = { isLoading:true, items: [], query: {} };
   componentDidMount() {
     this.setState(
       {
@@ -19,7 +20,7 @@ export default class Items extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState(
       {
-        query: nextProps.url.query.search
+        query: nextProps.url.query.search, isLoading:true
       },
       this.handleRequest
     );
@@ -30,11 +31,20 @@ export default class Items extends React.Component {
     const { items } = await response.json();
     console.log(items);
     this.setState({
-      items
+      items, isLoading:false
     });
   }
 
   render() {
+    if(this.state.isLoading){
+        return(
+            <Layout>
+                <Breadcrumbs/>
+                <Loading/>
+
+            </Layout>
+                )
+    }
     return (
       <Layout>
         <Breadcrumbs />
