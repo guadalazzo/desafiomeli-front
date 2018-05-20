@@ -5,7 +5,7 @@ export default () => (
 
     <style jsx>{`
       nav {
-        max-width: 85%;
+        max-width: 80%;
         margin: 16px auto;
         font-size: 14px;
         color: #999999;

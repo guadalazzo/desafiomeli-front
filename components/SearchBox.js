@@ -1,10 +1,13 @@
 import { Router } from "../routes"
 
-export default class SearchBox extends React.Component {
+class SearchBox extends React.Component {
   state = {
-    query: ""
+    query: "",
+     isLoading: true
   };
-
+  componentDidMount() {
+        this.setState({ isLoading: false });
+  }
   handleChange = event => {
     this.setState({ query: event.target.value });
   };
@@ -88,3 +91,4 @@ export default class SearchBox extends React.Component {
     );
   }
 }
+export default SearchBox

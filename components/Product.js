@@ -3,7 +3,7 @@ const CURRENCIES = {
   ARS: "$"
 };
 
-export default class Product extends React.Component {
+class Product extends React.Component {
   render() {
     const prod = this.props;
     return (
@@ -34,7 +34,7 @@ export default class Product extends React.Component {
             text-decoration: none;
             color: #333333;
             background: white;
-            max-width: 80%;
+            max-width: 75.8%;
             margin: 0 auto;
           }
           p {
@@ -94,3 +94,4 @@ export default class Product extends React.Component {
     );
   }
 }
+export default Product

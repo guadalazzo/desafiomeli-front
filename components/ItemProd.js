@@ -4,10 +4,7 @@ const CURRENCIES = {
   ARS: "$"
 };
 
-export default class ItemProd extends React.Component {
-  // handleClick = (event, id) => {
-  //   Router.replaceRoute(`/items?id=${id}`, `/items/${id}`, { shallow: true });
-  // };
+class ItemProd extends React.Component {
 
   render() {
     const { ...item } = this.props;
@@ -41,6 +38,7 @@ export default class ItemProd extends React.Component {
             justify-content: space-around;
             width: 100%;
             text-decoration: none;
+            transition: 0.5s ease-in-out;
           }
           .link__inside {
             display: flex;
@@ -82,3 +80,4 @@ export default class ItemProd extends React.Component {
     );
   }
 }
+export default ItemProd

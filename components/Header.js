@@ -1,5 +1,5 @@
 
-export default class Header extends React.Component{	
+class Header extends React.Component{
 	render(){
 		return <div>
 			
@@ -32,3 +32,4 @@ export default class Header extends React.Component{
 		</div>
 	}
 }
+export default Header
